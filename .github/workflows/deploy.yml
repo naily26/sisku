@@ -24,7 +24,7 @@ jobs:
       - name: "Build and push"
         run: |
           docker build -f Docker/dockerfile/Dockerfile -t app .
-          docker build -f Docker/dockerfile/web_server.dockerfile -t web_server .
+          docker build -f Docker/dockerfile/web_server/Dockerfile -t web_server .
           docker tag app ${{ secrets.DOCKERHUB_USERNAME}}/sistem-keuangan
           docker tag web_server ${{ secrets.DOCKERHUB_USERNAME}}/sistem-keuangan-web_server
           docker push ${{ secrets.DOCKERHUB_USERNAME}}/sistem-keuangan
