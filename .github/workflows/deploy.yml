@@ -1,4 +1,4 @@
-name: pilketos-osmanusgi
+name: sistem-keuangan
 
 on:
   push:
@@ -25,10 +25,10 @@ jobs:
         run: |
           docker build -f Docker/dockerfile/app.Dockerfile -t app .
           docker build -f Docker/dockerfile/web_server.Dockerfile -t web_server .
-          docker tag app ${{ secrets.DOCKERHUB_USERNAME}}/pilketos-osmanusgi
-          docker tag web_server ${{ secrets.DOCKERHUB_USERNAME}}/pilketos-osmanusgi-web_server
-          docker push ${{ secrets.DOCKERHUB_USERNAME}}/pilketos-osmanusgi
-          docker push ${{ secrets.DOCKERHUB_USERNAME}}/pilketos-osmanusgi-web_server
+          docker tag app ${{ secrets.DOCKERHUB_USERNAME}}/sistem-keuangan
+          docker tag web_server ${{ secrets.DOCKERHUB_USERNAME}}/sistem-keuangan-web_server
+          docker push ${{ secrets.DOCKERHUB_USERNAME}}/sistem-keuangan
+          docker push ${{ secrets.DOCKERHUB_USERNAME}}/sistem-keuangan-web_server
       - name: "Write config"
         run: |
           mkdir ~/.oci
