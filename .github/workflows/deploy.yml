@@ -23,8 +23,8 @@ jobs:
 
       - name: "Build and push"
         run: |
-          docker build -f Docker/dockerfile/Dockerfile -t app .
-          docker build -f Docker/dockerfile/web_server/Dockerfile -t web_server .
+          docker build -f Docker/dockerfile/app.Dockerfile -t app .
+          docker build -f Docker/dockerfile/web_server.Dockerfile -t web_server .
           docker tag app ${{ secrets.DOCKERHUB_USERNAME}}/sistem-keuangan
           docker tag web_server ${{ secrets.DOCKERHUB_USERNAME}}/sistem-keuangan-web_server
           docker push ${{ secrets.DOCKERHUB_USERNAME}}/sistem-keuangan
@@ -92,8 +92,8 @@ jobs:
           username: ubuntu
           key: ${{secrets.OCI_INSTANCE_KEY}}
           script: |
-            sudo docker pull nailyy/sistem-keuangan
-            sudo docker pull nailyy/sistem-keuangan-web_server
+            sudo docker pull lulukmufida0015sistem-keuangan
+            sudo docker pull lulukmufida0015sistem-keuangan-web_server
             sudo docker-compose up -d
             sudo docker exec app /bin/bash -c "php artisan key:generate"
             sudo docker exec app /bin/bash -c "echo 'DB_CONNECTION=${{ secrets.DB_CONNECTION }}' >> .env"
